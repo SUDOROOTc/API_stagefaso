@@ -1,0 +1,22 @@
+<mxfile host="65bd71144e">
+    <diagram name="MVP API Stage" id="0">
+        <mxGraphModel dx="949" dy="513" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="user" value="User&#xa;----------------&#xa;id&#xa;username&#xa;email&#xa;password&#xa;created_at" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+                    <mxGeometry x="60" y="30" width="220" height="180" as="geometry"/>
+                </mxCell>
+                <mxCell id="category" value="Category&#xa;----------------&#xa;id&#xa;name" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
+                    <mxGeometry x="400" y="50" width="220" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="stage" value="Stage&#xa;----------------&#xa;id&#xa;title&#xa;description&#xa;company&#xa;location&#xa;contact_email&#xa;skills&#xa;deadline&#xa;link&#xa;created_at&#xa;category_id (FK)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+                    <mxGeometry x="470" y="250" width="260" height="260" as="geometry"/>
+                </mxCell>
+                <mxCell id="rel1" style="endArrow=block;html=1;strokeWidth=2;" parent="1" source="stage" target="category" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
