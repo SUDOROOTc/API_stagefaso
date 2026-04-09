@@ -1,112 +1,112 @@
 [
     {
-        "title": "Stagiaire création de contenus vidéo avec IA",
-        "description": "Créer des vidéos courtes à l’aide d’outils d’IA générative, adapter les contenus pour les réseaux sociaux, participer à la conception de formats innovants, faire une veille sur les nouveaux outils de création vidéo basés sur l’IA. Profil recherché : étudiant(e) ou jeune diplômé(e) en communication, marketing digital, audiovisuel ou domaine similaire, intéressé(e) par l’IA générative et la création de contenus. Stage de 3 mois renouvelable, pouvant aboutir à un emploi.",
+        "title": "Stagiaire création de contenus vidéo et IA",
+        "description": "Créer des vidéos courtes à l’aide d’outils d’IA générative, adapter les contenus pour les réseaux sociaux, participer à la conception de formats innovants pour valoriser l’actualité digitale et technologique, faire une veille sur les nouveaux outils de création vidéo basés sur l’IA.",
         "company": "Digital Magazine Burkina",
         "location": "Ouagadougou",
         "contact_email": "digitalmagazinebf@gmail.com",
-        "skills": "Outils d’IA générative (Runway, Pika, CapCut), création de vidéos courtes, réseaux sociaux (Facebook, Instagram, TikTok, YouTube), veille technologique",
+        "skills": "Création de vidéos, IA générative, outils comme Runway, Pika, CapCut",
         "deadline": null,
         "link": "https://forms.gle/fuUZCKHSskuZ31eE7",
-        "category": "Communication / Marketing digital / Audiovisuel"
+        "category": "Communication"
     },
     {
         "title": "",
-        "description": "Missions principales : Développer, maintenir et mettre à jour les sites web (WordPress, Moodle, autres CMS). Intégrer des pages et fonctionnalités en PHP, HTML/CSS et JavaScript. Optimiser les sites pour le référencement (SEO) et les performances. Créer et adapter des contenus visuels (infographie) et éditoriaux (rédaction web). Assurer la sécurité, les sauvegardes et la fiabilité technique des plateformes. Participer à l’amélioration de l’ergonomie et de l’expérience utilisateur. Profil recherché : Bac +2 à Bac +5 en développement web, multimédia ou équivalent. Une première expérience en développement ou en gestion de site est un atout. Veille technologique régulière.",
-        "company": "",
+        "description": "Développer, maintenir et mettre à jour les sites web (WordPress, Moodle, autres CMS). Intégrer des pages et fonctionnalités en PHP, HTML/CSS et JavaScript. Optimiser les sites pour le référencement (SEO) et les performances. Créer et adapter des contenus visuels (infographie) et éditoriaux (rédaction web). Assurer la sécurité, les sauvegardes et la fiabilité technique des plateformes. Participer à l’amélioration de l’ergonomie et de l’expérience utilisateur. Profil recherché : Bac +2 à Bac +5 en développement web, multimédia ou équivalent. Une première expérience en développement ou en gestion de site est un atout.",
+        "company": "Digital Magazine Burkina",
         "location": "",
         "contact_email": "",
         "skills": "HTML5, CSS3, JavaScript, WordPress, Moodle, PHP, SQL, Git, SEO technique, performance web, gestion d’hébergement, DNS, outils de monitoring",
         "deadline": null,
-        "link": "",
-        "category": ""
+        "link": "https://whatsapp.com/channel/0029VbBZO232ZjCo8lNtAD0q",
+        "category": "Informatique"
     },
     {
         "title": "Assistant(e) Relation Client et Support Utilisateur",
-        "description": "Former les clients à l’utilisation de Experto module SYCEBNL : organisation de sessions de démonstration, accompagnement post-installation, élaboration de supports pédagogiques. Assurer le support client de niveau 1 : réponses aux questions, résolution de problèmes simples, remontée des incidents techniques à l’équipe. Participer activement à la relation client : suivi de la satisfaction, relance proactive, fidélisation. Contribuer à la recherche de nouveaux prospects : veille, qualification de contacts, prise de rendez-vous, participation à des salons ou webinaires. Aider à la rédaction de rapports de formation, de comptes-rendus de visites, et à la mise à jour de la base clients.",
+        "description": "Former les clients à l’utilisation de Experto module SYCEBNL, assurer le support client de niveau 1, participer à la relation client, contribuer à la recherche de nouveaux prospects, aider à la rédaction de rapports de formation et à la mise à jour de la base clients. Profil recherché : Comptabilité, Gestion, Audit, ou Management, maîtrise des outils informatiques, bonnes aptitudes communicationnelles, qualités relationnelles et pédagogiques, sens du service client.",
         "company": "Experto Soft",
         "location": "Ouagadougou",
         "contact_email": "contact@expertosoft.com",
-        "skills": "Comptabilité, Gestion, Audit, Management, outils informatiques, Excel, PowerPoint, logiciels de gestion comptable, SYSCOHADA révisé, SYCEBNL, visioconférence, pédagogie, communication, service client, prospection, fidélisation",
+        "skills": "Comptabilité, Gestion, Audit, Management, Excel, PowerPoint, logiciels de gestion comptable, SYSCOHADA, SYCEBNL, visioconférence (Zoom, Teams), pédagogie, communication, rédaction, service client, prospection",
         "deadline": null,
         "link": "",
-        "category": "Commercial, vente – Gestion, comptabilité, finance – Marketing, communication"
+        "category": "Informatique"
     },
     {
         "title": "STAGE – DEV FULL STACK",
-        "description": "Contribuer directement aux solutions numériques qui transforment les entreprises africaines, dans un cadre d’apprentissage concret. Développement d’interfaces et d’automatisations en production, participation aux projets clients et outils internes, travail sur une stack moderne : TypeScript, React/Next.js. Apprentissage par la pratique sur des problématiques réelles. Vendredis dédiés à un projet innovant défini avec l’équipe. Rémunération : 100 000 FCFA/mois pendant 6 mois, possibilité d’embauche au sein du groupe BBS Holding, matériel informatique haut de gamme fourni.",
+        "description": "Contribuer directement aux solutions numériques qui transforment les entreprises africaines, dans un cadre d’apprentissage concret. Développement d’interfaces et d’automatisations en production, participation aux projets clients et outils internes, travail sur une stack moderne : TypeScript, React/Next.js.",
         "company": "Aïobi",
         "location": "Zone du Bois, Ouagadougou",
         "contact_email": "talent@aiobi.world",
-        "skills": "JavaScript/TypeScript, React, Next.js, autonomie, résolution de problèmes",
+        "skills": "JavaScript/TypeScript, React, Next.js, développement d'interfaces, automatisations, résolution de problèmes",
         "deadline": null,
         "link": "",
-        "category": "Stage"
+        "category": "Informatique"
     },
     {
         "title": "STAGE – Data Analyst IA",
-        "description": "Contribuer à la transformation de données brutes en insights stratégiques, au sein de projets IA concrets. Développement du data warehouse, collecte et nettoyage de données multi-sources, entraînement et évaluation de modèles prédictifs, création de visualisations et dashboards (Power BI), exploration de données pour identifier patterns et anomalies, documentation des pipelines et processus analytiques, contribution aux projets NLP. Formation en data science, statistiques ou informatique, projets personnels démontrant une capacité analytique, maîtrise pratique de Python, SQL, idéalement Power BI, notions de machine learning (scikit-learn, XGBoost apprécié), rigueur et curiosité dans le traitement des données, autonomie dans l’apprentissage. Rémunération : 100 000 FCFA/mois pendant 6 mois. Formation pratique sur des projets DATA/IA en production, accès aux données réelles d’entreprises africaines, matériel informatique haut de gamme fourni, mentorat par l’équipe data.",
+        "description": "Contribuer à la transformation de données brutes en insights stratégiques, au sein de projets IA concrets. Développement du data warehouse, collecte et nettoyage de données multi-sources, entraînement et évaluation de modèles prédictifs, création de visualisations et dashboards (Power BI), exploration de données pour identifier patterns et anomalies, documentation des pipelines et processus analytiques, contribution aux projets NLP.",
         "company": "Aïobi",
         "location": "Zone du Bois, Ouagadougou",
         "contact_email": "talent@aiobi.world",
-        "skills": "Python, SQL, Power BI, scikit-learn, XGBoost, machine learning, data analysis, data visualization",
+        "skills": "Python, SQL, Power BI, machine learning (scikit-learn, XGBoost), data science, statistiques, informatique",
         "deadline": null,
         "link": "",
-        "category": "Data Analyst"
+        "category": "Informatique"
     },
     {
         "title": "Stagiaire en communication",
-        "description": "Enabel au Burkina Faso recherche un·e stagiaire en communication pour appuyer l’équipe dans la production de contenus visuels et multimédias innovants afin de valoriser les actions et résultats des projets. Durée: 3 mois (renouvelable). Lieu: Ouagadougou, avec déplacements possibles dans les zones d’intervention d’Enabel.",
+        "description": "Production de contenus visuels et multimédias innovants afin de valoriser les actions et résultats des projets.",
         "company": "Enabel",
-        "location": "Ouagadougou, Burkina Faso",
+        "location": "Ouagadougou",
         "contact_email": "",
-        "skills": "Licence (BAC+3) en communication visuelle, multimédia, infographie ou production audiovisuelle, Maîtrise des logiciels de création graphique (Adobe Photoshop, Illustrator, InDesign, Canva, etc.), Compétences en montage vidéo (Adobe Premiere Pro, CapCut, DaVinci Resolve ou équivalents), Connaissances en photographie, traitement d’images et tendances en communication digitale, Créativité, sens du détail et capacité à travailler en équipe et sur le terrain",
+        "skills": "Maîtrise des logiciels de création graphique (Adobe Photoshop, Illustrator, InDesign, Canva), compétences en montage vidéo (Adobe Premiere Pro, CapCut, DaVinci Resolve), connaissances en photographie, traitement d’images et tendances en communication digitale",
         "deadline": null,
         "link": "https://tinyurl.com/36c4jws9",
         "category": "Communication"
     },
     {
-        "title": "Stagiaire en communication digitale",
-        "description": "Dans le cadre du développement de ses activités, Useful sarl recrute un(e) stagiaire pour appuyer l’équipe dans la gestion des pages et réseaux sociaux, la création et la publication de visuels promotionnels, la communication avec les prospects, la gestion et la fidélisation d’un portefeuille client, la prospection d’entreprises et de partenaires potentiels, et la participation à la promotion de ses services et formations.",
+        "title": "Stagiaire en Communication et Gestion des Réseaux Sociaux",
+        "description": "Dans le cadre du développement de ses activités, Useful sarl recrute un(e) stagiaire pour appuyer l’équipe dans la gestion des pages et réseaux sociaux, la création de visuels promotionnels, la communication avec les prospects, la gestion et la fidélisation d’un portefeuille client, la prospection d’entreprises et de partenaires potentiels, et la participation à la promotion de ses services et formations. Profil recherché : Bac+3 minimum, maîtrise des outils bureautiques, connaissance des réseaux sociaux et de leur gestion, connaissance en création de visuels (Canva ou équivalent), excellente expression écrite et orale en français, autonomie, organisation et sens de l’initiative. Conditions du stage : Lieu : Ouagadougou / Kamboinsin, Durée : 6 mois, Disponibilité : Immédiate.",
         "company": "Useful sarl",
         "location": "Ouagadougou / Kamboinsin",
         "contact_email": "infos@useful-sarl.com",
-        "skills": "Gestion des réseaux sociaux, création de visuels, outils bureautiques, communication écrite et orale",
+        "skills": "Gestion des réseaux sociaux, création de visuels, communication, prospection, fidélisation client",
         "deadline": null,
         "link": "",
-        "category": "Communication digitale"
+        "category": "Communication"
     },
     {
         "title": "Stage Communication Digitale",
-        "description": "LES STUDIOS AMIRSHOTIT est un studio de production audiovisuelle basé à Ouagadougou, spécialisé dans la création de contenus visuels professionnels. Le stage consiste à gérer les réseaux sociaux, rédiger et planifier des publications, proposer des concepts originaux, participer à des campagnes de communication, couvrir des événements et faire une veille concurrentielle. Profil recherché : étudiante ou jeune diplômée en communication, marketing digital, multimédia ou journalisme.",
+        "description": "Stage en communication digitale au sein d'un studio de production audiovisuelle, impliquant la gestion des réseaux sociaux, la création de contenus et la participation à des campagnes de communication.",
         "company": "LES STUDIOS AMIRSHOTIT",
         "location": "Ouagadougou (Karpala)",
         "contact_email": "emploi@amirshotit.com",
-        "skills": "Gestion des réseaux sociaux, rédaction, création de contenus, conception de campagnes, prise de photos, veille concurrentielle, analyse de statistiques",
+        "skills": "Gestion des réseaux sociaux, rédaction, création de contenu, veille concurrentielle, analyse de statistiques",
         "deadline": null,
         "link": "",
-        "category": "Communication / Marketing Digital"
+        "category": "Communication"
     },
     {
-        "title": "STAGE – SGBF Innov Codeurs",
-        "description": "Programme de stage dédié aux étudiants ou jeunes diplômés en informatique, développement logiciel ou systèmes d’information, avec une passion pour l’innovation technologique. Stage immersif dans un environnement innovant, contribution à des projets stratégiques pour la banque, et accompagnement pour développer les compétences.",
+        "title": "SGBF Innov Codeurs",
+        "description": "Stage immersif dans un environnement innovant pour contribuer à des projets stratégiques de la banque.",
         "company": "Société Générale Burkina Faso",
         "location": "",
         "contact_email": "adama.tamboura@socgen.com",
         "skills": "informatique, développement logiciel, systèmes d’information, résolution de problèmes complexes, innovation technologique",
         "deadline": null,
         "link": "",
-        "category": "Stage"
+        "category": "Informatique"
     },
     {
         "title": "KIFF TES VACANCES AVEC SUNU ASSURANCES BURKINA FASO, 4ème édition",
-        "description": "Vous cherchez des opportunités de stage pour renforcer vos compétences et votre formation ; SUNU Assurances Burkina Faso vous offre l’opportunité. Vous pouvez postuler physiquement dans les différentes représentations ou en envoyant votre dossier à l’adresse email: burkinafaso.vie@sunu-group.com Pour plus d’information : 25 33 37 11",
+        "description": "Stage pour renforcer vos compétences et votre formation chez SUNU Assurances Burkina Faso.",
         "company": "SUNU Assurances Burkina Faso",
         "location": "",
         "contact_email": "burkinafaso.vie@sunu-group.com",
         "skills": "",
         "deadline": null,
         "link": "",
-        "category": ""
+        "category": "Finance"
     }
 ]

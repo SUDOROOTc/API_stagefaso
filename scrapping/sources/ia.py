@@ -45,23 +45,37 @@ def call_ia(description):
         return ""
 
     prompt = (
-        "Tu es un assistant qui extrait les informations d'une offre de stage.\n\n"
-        "Tu dois répondre STRICTEMENT avec ce format (une ligne par champ) :\n\n"
-        "Title: ...\n"
-        "Company: ...\n"
-        "Location: ...\n"
-        "Contact_email: ...\n"
-        "Skills: ...\n"
-        "Deadline: ...\n"
-        "Link: ...\n"
-        "Category: ...\n"
-        "Description: ...\n\n"
-        "Règles importantes :\n"
-        "- Ne pas ajouter de texte avant ou après\n"
-        "- Ne pas utiliser de markdown (** ou - ou *)\n"
-        "- Si une information est absente, écrire: N/A\n"
-        "- Ne pas inventer d'informations\n\n"
-        f"Texte : {description}"
+         "Tu es un assistant qui extrait les informations d'une offre de stage.\n\n"
+    
+    "Tu dois répondre STRICTEMENT avec ce format (une ligne par champ) :\n\n"
+    "Title: ...\n"
+    "Company: ...\n"
+    "Location: ...\n"
+    "Contact_email: ...\n"
+    "Skills: ...\n"
+    "Deadline: ...\n"
+    "Link: ...\n"
+    "Category: ...\n"
+    "Description: ...\n\n"
+
+    "Catégories autorisées (choisir UNE seule) :\n"
+    "- Informatique\n"
+    "- Marketing\n"
+    "- Finance\n"
+    "- Ressources Humaines\n"
+    "- Communication\n"
+    "- Design\n"
+    "- Logistique\n\n"
+
+    "Règles importantes :\n"
+    "- Tu dois analyser le contenu du stage pour choisir la catégorie la plus pertinente\n"
+    "- Tu dois choisir UNE SEULE catégorie dans la liste\n"
+    "- Ne jamais inventer une nouvelle catégorie\n"
+    "- Ne pas ajouter de texte avant ou après\n"
+    "- Ne pas utiliser de markdown (** ou - ou *)\n"
+    "- Si une information est absente, écrire: N/A\n\n"
+
+    f"Texte : {description}"
     )
 
     headers = {
@@ -81,68 +95,83 @@ def call_ia(description):
 
         ia_text = response.json()["choices"][0]["message"]["content"]
 
-        # 🔥 DEBUG ICI
-        print("\n================ IA RAW OUTPUT ================\n")
-        print(ia_text)
-        print("\n==============================================\n")
-
+   
         return ia_text
 
     except Exception as e:
         print(f"⚠️ Erreur OpenRouter : {e}")
         return ""
-def parse_ia_output(text):
-    stage_data = {
-        "title": "",
-        "description": "",
-        "company": "",
-        "location": "",
-        "contact_email": "",
-        "skills": "",
-        "deadline": None,
-        "link": "",
-        "category": ""
-    }
 
-    # Nettoyer markdown (** etc)
+
+VALID_CATEGORIES = [
+    "Informatique",
+    "Marketing",
+    "Finance",
+    "Ressources Humaines",
+    "Communication",
+    "Design",
+    "Logistique"
+]
+
+FIELD_MAP = {
+    "title": "title",
+    "company": "company",
+    "location": "location",
+    "email": "contact_email",
+    "contact_email": "contact_email",
+    "skills": "skills",
+    "compétences": "skills",
+    "deadline": "deadline",
+    "link": "link",
+    "category": "category",
+    "description": "description"
+}
+
+
+def parse_ia_output(text):
+    # Structure de base
+    data = {field: "" for field in FIELD_MAP.values()}
+    data["deadline"] = None
+
+    # Nettoyage markdown
     text = re.sub(r"\*\*", "", text)
 
     lines = [line.strip() for line in text.splitlines() if line.strip()]
 
     for line in lines:
-        key_value = re.split(r":|-", line, maxsplit=1)
-        if len(key_value) != 2:
+        parts = re.split(r":|-", line, maxsplit=1)
+        if len(parts) != 2:
             continue
 
-        key = key_value[0].strip().lower()
-        value = key_value[1].strip()
+        key, value = parts[0].lower().strip(), parts[1].strip()
 
         if value == "N/A":
             value = ""
 
-        if "title" in key:
-            stage_data["title"] = value
-        elif "company" in key:
-            stage_data["company"] = value
-        elif "location" in key:
-            stage_data["location"] = value
-        elif "email" in key:
-            stage_data["contact_email"] = value
-        elif "skills" in key or "compétences" in key:
-            stage_data["skills"] = value
-        elif "deadline" in key:
-            try:
-                stage_data["deadline"] = datetime.strptime(value, "%Y-%m-%d").date()
-            except:
-                stage_data["deadline"] = None
-        elif "link" in key:
-            stage_data["link"] = value
-        elif "category" in key:
-            stage_data["category"] = value
-        elif "description" in key:
-            stage_data["description"] = value
+        # Trouver le champ correspondant
+        for k in FIELD_MAP:
+            if k in key:
+                field = FIELD_MAP[k]
 
-    return stage_data
+                if field == "deadline":
+                    try:
+                        data["deadline"] = datetime.strptime(value, "%Y-%m-%d").date()
+                    except:
+                        data["deadline"] = None
+
+                elif field == "category":
+                    if value in VALID_CATEGORIES:
+                        data["category"] = value
+                    else:
+                        print(f"⚠️ Catégorie invalide: {value}")
+                        data["category"] = "Informatique"
+
+                else:
+                    data[field] = value
+
+                break  # important pour éviter conflits
+
+    return data
 
 # -----------------------------
 # Traitement principal
@@ -153,13 +182,11 @@ def process_item(raw_item):
 
     ia_output = call_ia(description_raw)
 
-    # 🔥 DEBUG
-    print(">>> TEXTE IA AVANT PARSE:", ia_output)
+  
 
     ia_data = parse_ia_output(ia_output)
 
-    # 🔥 DEBUG
-    print(">>> RESULTAT PARSE:", ia_data)
+
 
     return {
         "title": ia_data.get("title", ""),
