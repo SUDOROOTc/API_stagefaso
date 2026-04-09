@@ -1,0 +1,97 @@
+<!-- templates/home.html -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>StageFaso API</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 2em; line-height: 1.6; }
+        h1, h2 { color: #2c3e50; }
+        code { background-color: #f4f4f4; padding: 2px 5px; border-radius: 3px; }
+        pre { background-color: #f4f4f4; padding: 10px; border-radius: 5px; overflow-x: auto; }
+        a { color: #2980b9; text-decoration: none; }
+        section { margin-bottom: 2em; }
+        .endpoint { border-left: 3px solid #2980b9; padding-left: 10px; margin-bottom: 1em; }
+    </style>
+</head>
+<body>
+
+    <h1>Bienvenue sur l'API <code>REST</code> StageFaso</h1>
+
+    
+
+    <p>Cette API permet de gérer les stages et les comptes utilisateurs. Vous pouvez créer, lire, modifier et supprimer des stages via les endpoints REST sécurisés par JWT.</p>
+
+    <section>
+        <h2>1. Authentification</h2>
+        <div class="endpoint">
+            <p><strong>Créer un compte :</strong> <code>POST /api/accounts/register/</code></p>
+            <pre>
+{
+    "username": "votre_nom",
+    "email": "votre_email",
+    "password": "votre_mot_de_passe"
+}
+            </pre>
+            <p><strong>Se connecter :</strong> <code>POST /api/accounts/login/</code></p>
+            <pre>
+{
+    "username": "votre_nom",
+    "password": "votre_mot_de_passe"
+}
+            </pre>
+            <p>Réponse : <code>{"access": "...", "refresh": "..."}</code> (tokens JWT)</p>
+        </div>
+    </section>
+
+    <section>
+        <h2>2. Endpoints Stages</h2>
+        <div class="endpoint">
+            <p><strong>Liste des stages :</strong> <code>GET /api/stages/</code></p>
+            <p>Requête sécurisée : ajoutez l’en-tête <code>Authorization: Bearer &lt;token&gt;</code></p>
+        </div>
+        <div class="endpoint">
+            <p><strong>Détails d’un stage :</strong> <code>GET /api/stages/&lt;id&gt;/</code></p>
+        </div>
+        <div class="endpoint">
+            <p><strong>Créer un stage :</strong> <code>POST /api/stages/</code></p>
+            <pre>
+{
+    "title": "Stage Python",
+    "description": "Apprentissage Django et API REST",
+    "company": "StageFaso",
+    "location": "Ouagadougou",
+    "contact_email": "contact@stagefaso.bf",
+    "skills": "Python, Django",
+    "deadline": "2026-05-31",
+    "link": "http://stagefaso.bf/stage/1",
+    "category": "Informatique"
+}
+            </pre>
+        </div>
+        <div class="endpoint">
+            <p><strong>Modifier un stage :</strong> <code>PUT/PATCH /api/stages/&lt;id&gt;/</code></p>
+            <p>Exemple : même structure JSON que pour la création</p>
+        </div>
+        <div class="endpoint">
+            <p><strong>Supprimer un stage :</strong> <code>DELETE /api/stages/&lt;id&gt;/</code></p>
+        </div>
+    </section>
+
+    <section>
+        <h2>3. Pagination & Limite</h2>
+        <p>Les endpoints utilisent une pagination par défaut de 10 stages par page. Exemple :</p>
+        <pre>GET /api/stages/?page=2</pre>
+        <p>Limite d’utilisation : 100 requêtes par jour par utilisateur (rate limit).</p>
+    </section>
+
+    <section>
+        <h2>4. Conseils d’utilisation</h2>
+        <ul>
+            <li>Utilisez un token JWT valide pour tous les endpoints protégés.</li>
+            <li>Testez l’API avec Postman ou curl pour une meilleure visualisation.</li>
+            <li>Respectez la structure JSON pour POST/PUT afin d’éviter les erreurs.</li>
+        </ul>
+    </section>
+</body>
+</html>

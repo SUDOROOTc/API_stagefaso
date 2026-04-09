@@ -14,9 +14,19 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+# stagefaso/urls.py
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from django.http import JsonResponse
+from django.shortcuts import render
+
+# Vue pour la page d'accueil
+def home(request):
+    return render(request, "home.html")
 
 urlpatterns = [
+    path('', home),  # page par défaut
     path('admin/', admin.site.urls),
+    path('', include('stages.urls')),
+    path('api/accounts/', include('accounts.urls')),
 ]
