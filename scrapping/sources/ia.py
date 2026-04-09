@@ -41,19 +41,27 @@ def clean_text(text):
     return text.strip()
 
 def call_ia(description):
-    """
-    Appelle OpenRouter pour résumer et structurer la description.
-    L'IA peut répondre librement mais doit rester structurée.
-    """
     if not description:
         return ""
 
     prompt = (
-        "Tu es un assistant qui prend une description d'offre de stage et qui doit :\n"
-        "- Fournir toutes les informations importantes (titre, compagnie, lieu, email, compétences, deadline, lien, catégorie)\n"
-        "- Répondre de façon structurée mais libre, par exemple avec des lignes du type 'Title: ...', 'Description: ...'\n"
-        "- Ne pas inventer de données\n"
-        f"Texte de l’offre : {description}"
+        "Tu es un assistant qui extrait les informations d'une offre de stage.\n\n"
+        "Tu dois répondre STRICTEMENT avec ce format (une ligne par champ) :\n\n"
+        "Title: ...\n"
+        "Company: ...\n"
+        "Location: ...\n"
+        "Contact_email: ...\n"
+        "Skills: ...\n"
+        "Deadline: ...\n"
+        "Link: ...\n"
+        "Category: ...\n"
+        "Description: ...\n\n"
+        "Règles importantes :\n"
+        "- Ne pas ajouter de texte avant ou après\n"
+        "- Ne pas utiliser de markdown (** ou - ou *)\n"
+        "- Si une information est absente, écrire: N/A\n"
+        "- Ne pas inventer d'informations\n\n"
+        f"Texte : {description}"
     )
 
     headers = {
@@ -70,15 +78,20 @@ def call_ia(description):
     try:
         response = requests.post(OPENROUTER_URL, json=data, headers=headers)
         response.raise_for_status()
-        return response.json()["choices"][0]["message"]["content"]
+
+        ia_text = response.json()["choices"][0]["message"]["content"]
+
+        # 🔥 DEBUG ICI
+        print("\n================ IA RAW OUTPUT ================\n")
+        print(ia_text)
+        print("\n==============================================\n")
+
+        return ia_text
+
     except Exception as e:
         print(f"⚠️ Erreur OpenRouter : {e}")
         return ""
-
 def parse_ia_output(text):
-    """
-    Transforme la sortie libre de l'IA en dict structuré pour Stage.
-    """
     stage_data = {
         "title": "",
         "description": "",
@@ -91,31 +104,43 @@ def parse_ia_output(text):
         "category": ""
     }
 
+    # Nettoyer markdown (** etc)
+    text = re.sub(r"\*\*", "", text)
+
     lines = [line.strip() for line in text.splitlines() if line.strip()]
 
     for line in lines:
-        if re.match(r"(?i)^title\s*[:\-]\s*(.+)", line):
-            stage_data["title"] = re.match(r"(?i)^title\s*[:\-]\s*(.+)", line).group(1).strip()
-        elif re.match(r"(?i)^description\s*[:\-]\s*(.+)", line):
-            stage_data["description"] = re.match(r"(?i)^description\s*[:\-]\s*(.+)", line).group(1).strip()
-        elif re.match(r"(?i)^company\s*[:\-]\s*(.+)", line):
-            stage_data["company"] = re.match(r"(?i)^company\s*[:\-]\s*(.+)", line).group(1).strip()
-        elif re.match(r"(?i)^location\s*[:\-]\s*(.+)", line):
-            stage_data["location"] = re.match(r"(?i)^location\s*[:\-]\s*(.+)", line).group(1).strip()
-        elif re.match(r"(?i)^contact_email\s*[:\-]\s*(.+)", line):
-            stage_data["contact_email"] = re.match(r"(?i)^contact_email\s*[:\-]\s*(.+)", line).group(1).strip()
-        elif re.match(r"(?i)^skills\s*[:\-]\s*(.+)", line):
-            stage_data["skills"] = re.match(r"(?i)^skills\s*[:\-]\s*(.+)", line).group(1).strip()
-        elif re.match(r"(?i)^deadline\s*[:\-]\s*(.+)", line):
-            date_str = re.match(r"(?i)^deadline\s*[:\-]\s*(.+)", line).group(1).strip()
+        key_value = re.split(r":|-", line, maxsplit=1)
+        if len(key_value) != 2:
+            continue
+
+        key = key_value[0].strip().lower()
+        value = key_value[1].strip()
+
+        if value == "N/A":
+            value = ""
+
+        if "title" in key:
+            stage_data["title"] = value
+        elif "company" in key:
+            stage_data["company"] = value
+        elif "location" in key:
+            stage_data["location"] = value
+        elif "email" in key:
+            stage_data["contact_email"] = value
+        elif "skills" in key or "compétences" in key:
+            stage_data["skills"] = value
+        elif "deadline" in key:
             try:
-                stage_data["deadline"] = datetime.strptime(date_str, "%Y-%m-%d").date()
+                stage_data["deadline"] = datetime.strptime(value, "%Y-%m-%d").date()
             except:
                 stage_data["deadline"] = None
-        elif re.match(r"(?i)^link\s*[:\-]\s*(.+)", line):
-            stage_data["link"] = re.match(r"(?i)^link\s*[:\-]\s*(.+)", line).group(1).strip()
-        elif re.match(r"(?i)^category\s*[:\-]\s*(.+)", line):
-            stage_data["category"] = re.match(r"(?i)^category\s*[:\-]\s*(.+)", line).group(1).strip()
+        elif "link" in key:
+            stage_data["link"] = value
+        elif "category" in key:
+            stage_data["category"] = value
+        elif "description" in key:
+            stage_data["description"] = value
 
     return stage_data
 
@@ -124,23 +149,28 @@ def parse_ia_output(text):
 # -----------------------------
 
 def process_item(raw_item):
-    """
-    Transforme un dict brut en dict prêt pour Django Stage
-    """
     description_raw = raw_item.get("description", "")
+
     ia_output = call_ia(description_raw)
+
+    # 🔥 DEBUG
+    print(">>> TEXTE IA AVANT PARSE:", ia_output)
+
     ia_data = parse_ia_output(ia_output)
 
+    # 🔥 DEBUG
+    print(">>> RESULTAT PARSE:", ia_data)
+
     return {
-        "title": ia_data.get("title", clean_text(raw_item.get("title", ""))),
-        "description": ia_data.get("description", clean_text(description_raw)),
-        "company": ia_data.get("company", clean_text(raw_item.get("company", ""))),
-        "location": ia_data.get("location", clean_text(raw_item.get("address", ""))),
-        "contact_email": ia_data.get("contact_email", clean_text(raw_item.get("email", ""))),
-        "skills": ia_data.get("skills", clean_text(raw_item.get("skills", ""))),
+        "title": ia_data.get("title", ""),
+        "description": ia_data.get("description", ""),
+        "company": ia_data.get("company", ""),
+        "location": ia_data.get("location", ""),
+        "contact_email": ia_data.get("contact_email", ""),
+        "skills": ia_data.get("skills", ""),
         "deadline": ia_data.get("deadline", None),
-        "link": ia_data.get("link", raw_item.get("link", "")),
-        "category": ia_data.get("category", clean_text(raw_item.get("category", "")) or "Informatique")
+        "link": ia_data.get("link", ""),
+        "category": ia_data.get("category", "")
     }
 
 def process_all(raw_list):
